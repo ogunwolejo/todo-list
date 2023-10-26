@@ -1,8 +1,14 @@
 import { FC } from "react";
+import Header from "../common/header/header";
 
 const Dashboard:FC = () => {
     return (
-        <div>Dashboard</div>
+        <>
+            <Header title="Dashboard"/>
+            <div className="p-10">
+                <div className="flex-grow">Dashboard</div>
+            </div>
+        </>
     )
 }
 

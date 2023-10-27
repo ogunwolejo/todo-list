@@ -4,9 +4,9 @@ import { ISidebarItems } from "../../../interface/i.sidebar";
 
 const SideBarMenuItem:FC<{prop:ISidebarItems}> = ({prop}) => {
     return (
-        <Fragment>
-            
-        </Fragment>
+        <div className="text-center">
+            <NavLink to={prop.to} className="text-xs md:text-sm xl:text-lg my-1  font-italics p-3">{prop.title}</NavLink>
+        </div>
     )
 }
 

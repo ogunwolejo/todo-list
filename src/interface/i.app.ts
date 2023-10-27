@@ -3,7 +3,7 @@ import { Moment } from "moment";
 export interface IApp {
     todos:Array<ITodo>;
     category:Array<ICategory>;
-    categorizedTodo:number;
+    //categorizedTodo:number;
     savedData:number
 }
 

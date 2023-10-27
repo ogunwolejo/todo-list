@@ -5,7 +5,7 @@ import { CategoryActionPayload, IApp, ICategory, ILocalCategory, ILocalNumber, I
 const initialState:IApp = {
     category:[],
     todos:[],
-    categorizedTodo:0,
+    //categorizedTodo:0,
     savedData:0
 }
 
@@ -17,11 +17,12 @@ const AppSlice = createSlice({
         addTodos:(state, action:PayloadAction<TodoActionPayload>) => {
             const todo:ITodo = action.payload.payload
             const newTodo = [...state.todos, todo]
-            const countCategorizedTodos = newTodo.filter((el:any) => el.category?.length > 0 || el.category != null) 
+            //const countCategorizedTodos:Array<any> = state.todos.filter((el:any) => !el.category || (el.category && el.category?.length > 0))
+            //console.log("@@@@@@@@@@", countCategorizedTodos)
             return {
                 ...state,
                 todos:newTodo,
-                categorizedTodo:countCategorizedTodos.length
+                //categorizedTodo:countCategorizedTodos.length
             }
         },
         addCategories:(state, action:PayloadAction<CategoryActionPayload>) => {

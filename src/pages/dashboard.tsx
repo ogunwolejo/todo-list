@@ -13,16 +13,16 @@ const Dashboard:FC = () => {
     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
   </svg>, [])
 
-    const {todos, category, categorizedTodo} = useSelector((store:any) => ({
+    const {todos, category, savedData} = useSelector((store:any) => ({
         todos: store.app.todos,
         category:store.app.category,
-        categorizedTodo:store.app.categorizedTodo
+        savedData:store.app.savedData
     }))
 
     const [shuttles, setShuttles] = useState<{
         todos:Array<any>;
         category:Array<any>;
-        categorizedTodo:Array<ITodo>
+        categorizedTodo:Array<any>
     }>({
         todos:[],
         category:[],
@@ -30,15 +30,21 @@ const Dashboard:FC = () => {
     })
 
     useEffect(() => {
-        const todoShuttle = getRandomItems(todos, 5)
-        const categoryShuttle = getRandomItems(category, 5)
-        const categorizedTodo = getRandomItemFotCategorizedTodo(todos, 5)
+        const todoShuttle = getRandomItems(todos, 3)
+        const categoryShuttle = getRandomItems(category, 3)
+        const categorizedTodo = getRandomItemFotCategorizedTodo(todos, 3)
+        
         setShuttles({
             category:categoryShuttle,
             todos:todoShuttle,
-            categorizedTodo
+            categorizedTodo:categorizedTodo
         })
     }, [todos, category])
+
+    const categorizedTodo = useMemo(() => {
+        const n = todos.filter((el:any) => !el.category || (el.category && el.category?.trim().length > 0))
+        return n.length
+    }, [todos])
 
     const navigate = useNavigate()
     
@@ -62,10 +68,10 @@ const Dashboard:FC = () => {
                         <Card1 title="Check Todos" data={categorizedTodo} bgColor="bg-blue-800" />
                     </div>
                     <div className="">
-                        <Card1 title="Categories" data={category.length || 0} bgColor="bg-green-700" />
+                        <Card1 title="Categories" data={category.length || 0} bgColor="bg-indigo-700" />
                     </div> 
                     <div className="">
-                        <Card1 title="Saved Todos" data={344} bgColor="bg-green-700" />
+                        <Card1 title="Saved Todos" data={savedData} bgColor="bg-green-700" />
                     </div>                
                 </div>
 
@@ -81,7 +87,7 @@ const Dashboard:FC = () => {
                             </div>
 
                             <div className="">
-                                <Card2 cardTitle="Checked Todos" list={shuttles.categorizedTodo} routerHandler={() => null}/>
+                                <Card2 cardTitle="Checked Todos" list={shuttles.categorizedTodo} routerHandler={() => null} isBtn={false} />
                             </div>
 
                         </div>

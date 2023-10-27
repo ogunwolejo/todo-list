@@ -68,7 +68,7 @@ const AddDataForm:FC<{handler:Function; resetHandler:any; isTodoForm?:boolean; c
                         category
                     </label>
                     {(categoriresData && categoriresData.length > 0) ? <select  onChange={(e:any) => setDataForm((c) => ({...c, category:e.target.value}))} className="border rounded-md text-xs placeholder:text-sm w-full py-2 px-3 placeholder:text-sm" placeholder="select a category...">
-                            <option disabled className="text-sm">Select category</option>
+                            <option className="text-sm" value="">Select category</option>
                         {
                             categoriresData?.map((e) => (
                                 <option key={e.id} value={e.id} className="text-sm">{e.title}</option>

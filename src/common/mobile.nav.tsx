@@ -26,7 +26,7 @@ const Dropdown = () => {
 
 
   return (
-    <div className="relative md:invisible">
+    <div className="relative lg:invisible">
       <button
         onClick={toggleDropdown}
         className="text-black px-4 py-2 rounded-md focus:outline-none"

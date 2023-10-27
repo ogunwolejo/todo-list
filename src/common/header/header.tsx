@@ -1,15 +1,12 @@
 import { FC, useMemo, memo } from "react";
 import moment from "moment";
 
-const Header:FC<{title:string}> = ({title}) => {
-    const todaysDate = useMemo(() => {
-        return moment().format("dddd, MMMM D, YYYY");
-    }, []) 
+const Header:FC<{title:string; handler:Function; search:string}> = ({title, search, handler}) => {
     return (
         <div className="bg-white h-10 md:h-20 min-w-fit xl:max-w-8xl box-border md:text-lg lg:text-2xl flex flex-row justify-equal xl:justify-between items-center drop-shadow-sm">
             <div className="text-xs md:text-lg font-emibold ms-2">{title}</div>
             <div className="mr-2">
-                <SearchInput/>
+                <SearchInput handler={handler} search={search}/>
             </div>
         </div>
     )
@@ -19,7 +16,7 @@ export default Header
 
 
 // takes in the handler and text
-const SearchInput:FC = memo(({}) => {
+const SearchInput:FC<{handler:Function; search:string}> = memo(({handler, search}) => {
     return (
         <div className="flex items-center border justify-self-center self-center rounded-xl py-1 mx-6 bg-trans">
             <span className="mx-1">
@@ -28,6 +25,8 @@ const SearchInput:FC = memo(({}) => {
                 </svg>
             </span>
             <input
+                onChange={(e:any) => handler(e.target.value)}
+                value={search}
                 type="text"
                 className="outline-none placeholder-light text-sm text-grey md:py-1 px-3 bg-transparent"
                 placeholder="Search anything..."

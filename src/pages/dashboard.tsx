@@ -13,8 +13,8 @@ const Dashboard:FC = () => {
   
     return (
         <Fragment>
-            <Header title="Dashboard"/>
-            <div className="p-6 bg-gray-200 h-screen">
+            {/* <Header title="Dashboard"/> */}
+            <div className="p-6 bg-gray-200 screen ">
                 <div className="grid grid-cols-2 md:grid-cols-4 grid-cols-4 md:grid-flow-col gap-2 lg:gap-3">
                     <div className="">
                         <Card1 title="Overall Todo List" data={344} bgColor="bg-red-700"/>

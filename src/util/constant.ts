@@ -1,0 +1,4 @@
+export enum DISPATCH_TYPES  {
+    CATEGORY = "DISPATCH_CATEGORY",
+    TODO = "DISPATCH_TODO"
+}

@@ -1,18 +1,31 @@
+import { Moment } from "moment";
+
 export interface IApp {
     todos:Array<ITodo>;
     category:Array<ICategory>
 }
 
 
-interface ITodo {
+export interface ITodo {
     id:string;
     title:string;
     description:string;
-    createdAt:string;
+    createdAt:Moment;
 }
 
 
-interface ICategory {
+export interface ICategory {
     id:string;
-    categoryTitle:string;
+    title:string;
+    createdAt:Moment
+}
+
+export type TodoActionPayload = {
+    payload: ITodo;
+    type:string
+}
+
+export type CategoryActionPayload = {
+    payload: ICategory;
+    type:string
 }

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Layout from "../layout/layout";
 import Dashboard from "../pages/dashboard";
@@ -7,6 +7,8 @@ import Categories from "../pages/categories";
 
 
 const AppRoutes:FC = () => {
+    // checking to see if the application has data on its local storage and then retrieving it into the application store
+    useEffect(() => {}, [])
     return (
         <BrowserRouter>
             <Routes>

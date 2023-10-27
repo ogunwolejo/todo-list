@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IApp } from "../interface/i.app";
+import { CategoryActionPayload, IApp, ICategory, ITodo, TodoActionPayload } from "../interface/i.app";
 
 
 const initialState:IApp = {
@@ -12,8 +12,20 @@ const AppSlice = createSlice({
     initialState,
     name:"app",
     reducers:{
-        addTodos:(state, action:PayloadAction) => {},
-        addCategories:() => {},
+        addTodos:(state, action:PayloadAction<TodoActionPayload>) => {
+            const todo:ITodo = action.payload.payload
+            return {
+                ...state,
+                todos:[...state.todos, todo]
+            }
+        },
+        addCategories:(state, action:PayloadAction<CategoryActionPayload>) => {
+            const newCat:ICategory = action.payload.payload
+            return {
+                ...state,
+                category: [...state.category, newCat]
+            }
+        },
 
         // editiing 
         editTodos:() => {},
@@ -29,7 +41,7 @@ const AppSlice = createSlice({
     },
 })
 
-const {addCategories, addTodos, editCategories, editTodos, searchCategories, searchTodo} = AppSlice.actions
+export const {addCategories, addTodos, editCategories, editTodos, searchCategories, searchTodo} = AppSlice.actions
 export const AppSliceReducer = AppSlice.reducer
 
 

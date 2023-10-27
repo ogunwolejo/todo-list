@@ -14,16 +14,16 @@ const Dashboard:FC = () => {
             <div className="p-10 bg-gray-200 h-screen relative">
                 <div className="grid lg:grid-col-3 grid-col-4 grid-flow-col gap-4 lg:gap-6">
                     <div className="">
-                        <Card1 title="Overall Todo List" data={344} bgColor="bg-red-700" color="red-500"/>
+                        <Card1 title="Overall Todo List" data={344} bgColor="bg-red-700"/>
                     </div>
                     <div className="">
-                        <Card1 title="Check Todos" data={344} bgColor="bg-blue-800" color="blue-500"/>
+                        <Card1 title="Check Todos" data={344} bgColor="bg-blue-800" />
                     </div>
                     <div className="">
-                        <Card1 title="Categories" data={344} bgColor="bg-green-700" color="red-500"/>
+                        <Card1 title="Categories" data={344} bgColor="bg-green-700" />
                     </div> 
                     <div className="">
-                        <Card1 title="Saved Todos" data={344} bgColor="bg-green-700" color="red-500"/>
+                        <Card1 title="Saved Todos" data={344} bgColor="bg-green-700" />
                     </div>                
                 </div>
 

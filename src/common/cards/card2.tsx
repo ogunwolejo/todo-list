@@ -1,5 +1,5 @@
 import { FC, Fragment, MouseEventHandler, ReactNode } from "react";
-import List from "../list.items";
+import List from "../../component/list.items";
 import moment from "moment";
 
 const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#000" className="w-4 h-4">
@@ -9,7 +9,7 @@ const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox=
 const Card2:FC<{cardTitle:string; list:Array<any>; routerHandler:MouseEventHandler<HTMLButtonElement>; listIcon?:ReactNode}> = ({cardTitle, list, routerHandler, listIcon = defaultIcon}) => {
     return (
         <Fragment>
-            <div className="h-32 md:h-72 w-auto border-box drop-shadow-xl border border-transparent bg-white rounded-lg p-4 my-1 md:mx-1">
+            <div className="h-32 md:h-72 w-auto border-box drop-shadow-xl border border-transparent bg-white rounded-lg p-4 my-1 md:mx-1 hover:cursor-pointer">
                 <div className="w-full mb-2">
                     <div className="flex flex-row justify-between items-center mb-1">
                         <h3 className="text-xs md:text-sm lg:text-md font-poppins font-semibold uppercase antialiased ">{cardTitle}</h3>

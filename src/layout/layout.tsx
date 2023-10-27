@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Sidebar from "../common/sidebar/sidebar";
+import Sidebar from "../component/sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 import Header from "../common/header/header";
 

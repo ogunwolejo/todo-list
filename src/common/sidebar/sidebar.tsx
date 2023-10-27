@@ -3,7 +3,7 @@ import SideBarMenu from "./sidebar-menu/sidebar.menu";
 
 const Sidebar:FC = () => {
   return (
-    <div className="h-screen w-12 sm:w-18 md:w-32 lg:w-64 bg-white drop-shadow-md">
+    <div className="h-auto w-12 sm:w-18 md:w-32 lg:w-48 xl:w-64 bg-white drop-shadow-md">
       <div className="flex flex-col justify-equally h-full">
         {/** sidebar header */}
         <div className="container my-6">

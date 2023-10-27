@@ -11,7 +11,8 @@ module.exports = {
       colors:{
         yellow:"#FABB18",
         grey:"#757575",
-        trans:"#EFEFEF"
+        trans:"#EFEFEF",
+        yellow1:"rgba(250, 187, 24, .1)"
       },
     },
   },

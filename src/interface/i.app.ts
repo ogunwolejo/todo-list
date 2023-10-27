@@ -3,7 +3,8 @@ import { Moment } from "moment";
 export interface IApp {
     todos:Array<ITodo>;
     category:Array<ICategory>;
-    categorizedTodo:number
+    categorizedTodo:number;
+    savedData:number
 }
 
 
@@ -29,5 +30,20 @@ export type TodoActionPayload = {
 
 export type CategoryActionPayload = {
     payload: ICategory;
+    type:string
+}
+
+export type ILocalTodos = {
+    payload: ITodo [];
+    type:string
+}
+
+export type ILocalCategory = {
+    payload: ICategory [];
+    type:string
+}
+
+export type ILocalNumber = {
+    payload:number;
     type:string
 }

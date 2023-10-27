@@ -21,9 +21,10 @@ const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox=
 
 
 const TodoList:FC = () => {
-    const {todos, categories} = useSelector((store:any) => ({
+    const {todos, categories, savedData} = useSelector((store:any) => ({
         todos: store.app.todos, 
-        categories:store.app.category
+        categories:store.app.category,
+        savedData:store.app.savedData
     }))
     const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
@@ -80,7 +81,7 @@ const TodoList:FC = () => {
                         <Card1 title="Current Todos" data={copyTodos.length || 0} bgColor="bg-white" color="text-[#898989]"/>
                     </div>
                     <div className="">
-                        <Card1 title="Todos Saved Locally" data={344} bgColor="bg-white" color="text-[#898989]"/>
+                        <Card1 title="Todos Saved Locally" data={savedData} bgColor="bg-white" color="text-[#898989]"/>
                     </div>                
                 </div>
 

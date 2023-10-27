@@ -1,11 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CategoryActionPayload, IApp, ICategory, ITodo, TodoActionPayload } from "../interface/i.app";
+import { CategoryActionPayload, IApp, ICategory, ILocalCategory, ILocalNumber, ILocalTodos, ITodo, TodoActionPayload } from "../interface/i.app";
 
 
 const initialState:IApp = {
     category:[],
     todos:[],
-    categorizedTodo:0
+    categorizedTodo:0,
+    savedData:0
 }
 
 
@@ -34,11 +35,33 @@ const AppSlice = createSlice({
             // where we triger a fux to save our entire data
             localStorage.setItem("Todos", JSON.stringify(state.todos))
             localStorage.setItem("category", JSON.stringify(state.category))
+            return {
+                ...state,
+                savedData:state.category.length + state.todos.length
+            }
+        },
+        addCategoriesFromLocalStorage: (state, action:PayloadAction<ILocalCategory>) => {
+            return {
+                ...state,
+                category:action.payload.payload
+            }
+        },
+        addTodosFromLocalStorage: (state, action:PayloadAction<ILocalTodos>) => {
+            return {
+                ...state,
+                todos:action.payload.payload
+            }
+        },
+        totalDataLocally: (state, action:PayloadAction<ILocalNumber>) => {
+            return {
+                ...state,
+                savedData: action.payload.payload
+            }    
         }
     },
 })
 
-export const {addCategories, addTodos, saveTodosLocally} = AppSlice.actions
+export const {addCategories, addTodos, saveTodosLocally, addCategoriesFromLocalStorage, addTodosFromLocalStorage, totalDataLocally} = AppSlice.actions
 export const AppSliceReducer = AppSlice.reducer
 
 

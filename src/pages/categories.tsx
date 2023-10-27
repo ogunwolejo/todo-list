@@ -21,9 +21,10 @@ const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox=
 </svg>
 
 const Categories:FC = () => {
-    const {todos, category} = useSelector((store:any) => ({
+    const {todos, category, savedData} = useSelector((store:any) => ({
         todos: store.app.todos,
-        category:store.app.category
+        category:store.app.category,
+        savedData:store.app.savedData
     }))
 
     const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -43,8 +44,6 @@ const Categories:FC = () => {
             setCopyCategory(category)
         }
     }, [category, search])
-    
-    const a:Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12,]
     
     // adding data to the todo state
     const openHandler = () => {
@@ -76,7 +75,7 @@ const Categories:FC = () => {
                         <Card1 title="Categories Count" data={category.length || 0} bgColor="bg-white" color="text-[#898989]"/>
                     </div>
                     <div className="">
-                        <Card1 title="Todos Saved Locally" data={344} bgColor="bg-white" color="text-[#898989]"/>
+                        <Card1 title="Todos Saved Locally" data={savedData} bgColor="bg-white" color="text-[#898989]"/>
                     </div>                
                 </div>
 

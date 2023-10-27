@@ -1,10 +1,9 @@
 import { Fragment, useRef, useState, FC } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { ICardData } from '../../interface/i.cardcategory';
 
-export const Modal:FC<{open:boolean; close:any}> = ({open, close})  =>{
-  //const cancelButtonRef = useRef(null)
-
+export const Modal:FC<{open:boolean; close:any; d:ICardData}> = ({open, close, d})  =>{
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" /*initialFocus={cancelButtonRef}*/ onClose={close}>
@@ -39,13 +38,19 @@ export const Modal:FC<{open:boolean; close:any}> = ({open, close})  =>{
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                        Deactivate account
+                        {d.title}
                       </Dialog.Title>
                       <div className="mt-2">
+                        {d.description.length > 0 && <p className="text-sm text-gray-500">
+                          {d.description}
+                          </p>
+                        }
+
                         <p className="text-sm text-gray-500">
-                          Are you sure you want to deactivate your account? All of your data will be permanently
-                          removed. This action cannot be undone.
+                          {d.data || 0}
                         </p>
+
+
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import { FC, useMemo, memo } from "react";
-import moment from "moment";
+import Dropdown from "../mobile.nav";
 
 const Header:FC<{title:string; handler:Function; search:string}> = ({title, search, handler}) => {
     return (
@@ -7,6 +7,9 @@ const Header:FC<{title:string; handler:Function; search:string}> = ({title, sear
             <div className="text-xs md:text-lg font-emibold ms-2">{title}</div>
             <div className="mr-2">
                 <SearchInput handler={handler} search={search}/>
+            </div>
+            <div className="mr-3">
+                <Dropdown/>
             </div>
         </div>
     )

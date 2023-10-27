@@ -11,6 +11,7 @@ export interface ITodo {
     title:string;
     description:string;
     createdAt:Moment;
+    category?:string
 }
 
 

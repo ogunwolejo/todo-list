@@ -8,6 +8,12 @@ import { Modal } from "../common/modal/modal";
 import AddDataForm from "../component/add.data";
 import { useSelector } from "react-redux";
 import { ICategory, ITodo } from "../interface/i.app";
+import { v4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import { addTodos } from "../store/slice";
+import { DISPATCH_TYPES } from "../util/constant";
+import moment from "moment";
 
 const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#000" className="w-4 h-4">
 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
@@ -15,9 +21,11 @@ const defaultIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox=
 
 
 const TodoList:FC = () => {
-    const {todos} = useSelector((store:any) => ({
-        todos: store.app.todos
+    const {todos, categories} = useSelector((store:any) => ({
+        todos: store.app.todos, 
+        categories:store.app.category
     }))
+    const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
     // copy todos
     const [copyTodos, setCopyTodos] = useState<Array<ITodo>>([])
@@ -26,7 +34,7 @@ const TodoList:FC = () => {
 
 
     useEffect(() => {
-        if(search.length > 2) {
+        if(search.length > 0) {
             const todoFilter = todos.filter((t:ITodo) =>  t.title.toLowerCase().includes(search.toLowerCase()))
             setCopyTodos(todoFilter)
         } else {
@@ -44,6 +52,20 @@ const TodoList:FC = () => {
     }
 
     // adding a new category to the category state
+    const addTodoHandler = (e:ITodo) => {
+        const t:ITodo = {
+            title:e.title,
+            id:e.id,
+            createdAt:e.createdAt,
+            description:e.description
+        }
+        dispatch(addTodos({type:DISPATCH_TYPES.TODO, payload:t}))
+    }
+
+    const close = () => {
+        setAddNewData(false)
+    }
+
     
     return (
         <Fragment>
@@ -76,9 +98,9 @@ const TodoList:FC = () => {
                             { todos.length > 0 ?
                                 copyTodos.map((e, idx:number) => (
                                     <TodoListComponent
-                                        key={idx} 
-                                        title="project01" 
-                                        createdAt="10:54pm" 
+                                        key={e.id} 
+                                        title={e.title} 
+                                        createdAt={moment(e.createdAt).format("LT")} 
                                         icon={defaultIcon}
                                     />
                                 ))
@@ -87,7 +109,7 @@ const TodoList:FC = () => {
                             }
                         </div>
 
-                        {/* {addNewData && <AddDataForm/>} */}
+                        {addNewData && <AddDataForm handler={(e:any) => addTodoHandler(e)} resetHandler={close} key={v4()} isTodoForm={true} categoriresData={categories}/>}
                         
                         <div className="flex flex-row justify-end items-center mt-5 py-3 mr-5 w-full">
                             <button onClick={openHandler}>
@@ -102,7 +124,7 @@ const TodoList:FC = () => {
                     
                 </div>
             </div>
-            <Modal close={() => setAddNewCategory(false)} open={addNewCategory}/>
+            {/*<Modal close={() => setAddNewCategory(false)} open={addNewCategory}/>*/}
             
 
         </Fragment>

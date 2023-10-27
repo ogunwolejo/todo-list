@@ -36,7 +36,7 @@ const Categories:FC = () => {
     const [addNewData, setAddNewData] = useState<boolean>(false)
 
     useEffect(() => {
-        if(search.length > 2) {
+        if(search.length > 0) {
             const filterCategories = category.filter((c:ICategory) =>  c.title.toLowerCase().includes(search.toLowerCase()))
             setCopyCategory(filterCategories)
         } else {
@@ -60,8 +60,8 @@ const Categories:FC = () => {
         dispatch(addCategories({type:DISPATCH_TYPES.CATEGORY, payload:cat}))
     }
 
-    const cancelAddingCategoriesHandler = (e:any) => {
-        console.log("cancel adding ---> ", e)
+    const cancelAddingCategoriesHandler = () => {
+        setAddNewData(false)
     }
 
     return (
@@ -99,14 +99,14 @@ const Categories:FC = () => {
                                         key={idx} 
                                         title={e.title}
                                         data={7} 
-                                        createdAt={moment(e.createdAt).format("LT")} 
+                                        createdAt={e.createdAt} 
                                         icon={defaultIcon}
                                     />
                                 ))
                             }
                         </div>}
 
-                        {addNewData && <AddDataForm handler={addCategoryHandler} resetHandler={(e:any) => cancelAddingCategoriesHandler(e)} key={v4()}/>}                       
+                        {addNewData && <AddDataForm handler={addCategoryHandler} resetHandler={cancelAddingCategoriesHandler} key={v4()}/>}                       
                     
                         <div className="flex flex-row justify-end items-center px-3 mt-2 mr-5 w-full">
                             <button onClick={openHandler}>
@@ -122,7 +122,7 @@ const Categories:FC = () => {
                 </div>
             </div>
 
-            <Modal close={() => setAddNewCategory(false)} open={addNewCategory}/>
+            {/*<Modal close={() => setAddNewCategory(false)} open={addNewCategory}/>*/}
             
         </Fragment>
     )

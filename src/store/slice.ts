@@ -14,6 +14,7 @@ const AppSlice = createSlice({
     reducers:{
         addTodos:(state, action:PayloadAction<TodoActionPayload>) => {
             const todo:ITodo = action.payload.payload
+            console.log("====>", todo)
             return {
                 ...state,
                 todos:[...state.todos, todo]

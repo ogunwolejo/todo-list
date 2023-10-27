@@ -1,11 +1,20 @@
 import { FC, Fragment, ReactNode, useState } from "react";
 import {Modal} from "../common/modal/modal";
+import { Moment } from "moment";
+import { ICardData } from "../interface/i.cardcategory";
 
-const CategoryCard:FC<{title:string; data:number; createdAt:string; icon:ReactNode; description?:string }> = ({title, data, createdAt, icon, description}) => {
-    console.log(title)
+
+
+const CategoryCard:FC<{title:string; data:number; createdAt:Moment; icon:ReactNode; description?:string }> = ({title, data, createdAt, icon, description}) => {
     const [openModal, setIsOpenModal] = useState<boolean>(false)
     const openModalHandler = () => {
         setIsOpenModal(true)
+    }
+    const cardData:ICardData = {
+        title: title,
+        data: data,
+        createdAt,
+        description:!description ? "" : description
     }
     return (
         <Fragment>
@@ -15,7 +24,7 @@ const CategoryCard:FC<{title:string; data:number; createdAt:string; icon:ReactNo
                     <label className={`text-xs md:text-sm my-1 font-semibold font-poppins mx-3 w-full text-center text-[#898989]`}>{title}</label>
                 </div>
             </div>
-            <Modal open={openModal} close={() => setIsOpenModal(false)}/>
+            <Modal open={openModal} close={() => setIsOpenModal(false)} d={cardData}/>
         </Fragment>
     )
 }

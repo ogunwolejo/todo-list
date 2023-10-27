@@ -16,13 +16,17 @@ const Card2:FC<{cardTitle:string; list:Array<any>; routerHandler:MouseEventHandl
                     </div>
                 </div>
                 {/*** */}
-                <div className="">
-                    <List 
-                        title="project01" 
-                        createdAt="10:54pm" 
-                        icon={listIcon}
-                    />
-                </div>
+                {
+                    list.map((e:any, idx:number) => (
+                        <div className="" key={idx}>
+                            <List 
+                                title={e.title} 
+                                createdAt={moment(e.createdAt).format("LT")} 
+                                icon={listIcon}
+                            />
+                        </div>
+                    ))
+                }
                 {/** the view button */}
                 <div className="my-3 flex flex-row justify-end items-center">
                     <button className="p-2 text-black rounded-lg text-sm flex flex-row justify-start items-center gap-1" onClick={routerHandler}>

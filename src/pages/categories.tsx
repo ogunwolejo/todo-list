@@ -23,8 +23,8 @@ const Categories:FC = () => {
     return (
         <Fragment>
             <Header title="Todos Categry"/>
-            <div className="p-10 bg-gray-200 h-screen relative">
-                <div className="grid grid-col-4 grid-flow-col gap-2">
+            <div className="p-6 bg-gray-200 h-screen">
+                <div className="grid grid-cols-3 grid-flow-col gap-2 lg:gap-4">
                     <div className="">
                         <Card1 title="All Todos" data={344} bgColor="bg-white" color="text-[#898989]"/>
                     </div>

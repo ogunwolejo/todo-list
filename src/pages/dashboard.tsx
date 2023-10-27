@@ -14,8 +14,8 @@ const Dashboard:FC = () => {
     return (
         <Fragment>
             <Header title="Dashboard"/>
-            <div className="p-10 bg-gray-200 h-screen relative">
-                <div className="grid lg:grid-col-3 grid-col-4 grid-flow-col gap-4 lg:gap-6">
+            <div className="p-6 bg-gray-200 h-screen">
+                <div className="grid grid-cols-2 md:grid-cols-4 grid-cols-4 md:grid-flow-col gap-2 lg:gap-3">
                     <div className="">
                         <Card1 title="Overall Todo List" data={344} bgColor="bg-red-700"/>
                     </div>
@@ -32,13 +32,13 @@ const Dashboard:FC = () => {
 
                 <div className="p-1 mt-10 h-auto">
                     <div className="">
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
-                            <div className="">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 lg:gap-4">
                                 <Card2 cardTitle="Todos" list={[]} routerHandler={() => navigate("/my-todo")}/>
+                                <Card2 cardTitle="Category" list={[]} routerHandler={() => navigate("/categories")} listIcon={categoryFolder}/>
+                            <div className="">
                             </div>
 
                             <div className="">
-                                <Card2 cardTitle="Category" list={[]} routerHandler={() => navigate("/categories")} listIcon={categoryFolder}/>
                             </div>
 
                             <div className="">

@@ -5,5 +5,5 @@ export interface IFormData {
     title:string;
     description: string;
     createdAt:null | Moment;
-    category?:string
+    category?:string | null
 }

@@ -5,7 +5,7 @@ import Card2 from "../common/cards/card2";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ITodo } from "../interface/i.app";
-import { getRandomItems } from "../util/shuttle";
+import { getRandomItemFotCategorizedTodo, getRandomItems } from "../util/shuttle";
 import Dropdown from "../common/mobile.nav";
 
 const Dashboard:FC = () => {
@@ -13,25 +13,30 @@ const Dashboard:FC = () => {
     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
   </svg>, [])
 
-    const {todos, category} = useSelector((store:any) => ({
+    const {todos, category, categorizedTodo} = useSelector((store:any) => ({
         todos: store.app.todos,
-        category:store.app.category
+        category:store.app.category,
+        categorizedTodo:store.app.categorizedTodo
     }))
 
     const [shuttles, setShuttles] = useState<{
         todos:Array<any>;
         category:Array<any>;
+        categorizedTodo:Array<ITodo>
     }>({
         todos:[],
-        category:[]
+        category:[],
+        categorizedTodo:[]
     })
 
     useEffect(() => {
         const todoShuttle = getRandomItems(todos, 5)
         const categoryShuttle = getRandomItems(category, 5)
+        const categorizedTodo = getRandomItemFotCategorizedTodo(todos, 5)
         setShuttles({
             category:categoryShuttle,
-            todos:todoShuttle
+            todos:todoShuttle,
+            categorizedTodo
         })
     }, [todos, category])
 
@@ -54,7 +59,7 @@ const Dashboard:FC = () => {
                         <Card1 title="Overall Todo List" data={todos.length || 0} bgColor="bg-red-700"/>
                     </div>
                     <div className="">
-                        <Card1 title="Check Todos" data={344} bgColor="bg-blue-800" />
+                        <Card1 title="Check Todos" data={categorizedTodo} bgColor="bg-blue-800" />
                     </div>
                     <div className="">
                         <Card1 title="Categories" data={category.length || 0} bgColor="bg-green-700" />
@@ -76,7 +81,7 @@ const Dashboard:FC = () => {
                             </div>
 
                             <div className="">
-                                <Card2 cardTitle="Checked Todos" list={[]} routerHandler={() => null}/>
+                                <Card2 cardTitle="Checked Todos" list={shuttles.categorizedTodo} routerHandler={() => null}/>
                             </div>
 
                         </div>

@@ -2,7 +2,8 @@ import { Moment } from "moment";
 
 export interface IApp {
     todos:Array<ITodo>;
-    category:Array<ICategory>
+    category:Array<ICategory>;
+    categorizedTodo:number
 }
 
 
@@ -11,7 +12,7 @@ export interface ITodo {
     title:string;
     description:string;
     createdAt:Moment;
-    category?:string
+    category?:string | null
 }
 
 

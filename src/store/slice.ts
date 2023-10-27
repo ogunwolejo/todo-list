@@ -4,7 +4,8 @@ import { CategoryActionPayload, IApp, ICategory, ITodo, TodoActionPayload } from
 
 const initialState:IApp = {
     category:[],
-    todos:[]
+    todos:[],
+    categorizedTodo:0
 }
 
 
@@ -14,10 +15,12 @@ const AppSlice = createSlice({
     reducers:{
         addTodos:(state, action:PayloadAction<TodoActionPayload>) => {
             const todo:ITodo = action.payload.payload
-            console.log("====>", todo)
+            const newTodo = [...state.todos, todo]
+            const countCategorizedTodos = newTodo.filter((el:any) => el.category?.length > 0 || el.category != null) 
             return {
                 ...state,
-                todos:[...state.todos, todo]
+                todos:newTodo,
+                categorizedTodo:countCategorizedTodos.length
             }
         },
         addCategories:(state, action:PayloadAction<CategoryActionPayload>) => {
@@ -27,22 +30,15 @@ const AppSlice = createSlice({
                 category: [...state.category, newCat]
             }
         },
-
-        // editiing 
-        editTodos:() => {},
-        editCategories:() => {},
-        
-        // searching 
-        searchTodo:() => {},
-        searchCategories:() => {},
-
-        //save locally
-        saveCategoriesLocally:() => {},
-        saveTodosLocally:() => {}
+        saveTodosLocally:(state) => {
+            // where we triger a fux to save our entire data
+            localStorage.setItem("Todos", JSON.stringify(state.todos))
+            localStorage.setItem("category", JSON.stringify(state.category))
+        }
     },
 })
 
-export const {addCategories, addTodos, editCategories, editTodos, searchCategories, searchTodo} = AppSlice.actions
+export const {addCategories, addTodos, saveTodosLocally} = AppSlice.actions
 export const AppSliceReducer = AppSlice.reducer
 
 

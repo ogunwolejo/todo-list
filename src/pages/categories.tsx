@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import AddDataForm from "../component/add.data";
 import { useDispatch } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import {addCategories} from "../store/slice"
+import {addCategories, saveTodosLocally} from "../store/slice"
 import { ICategory } from "../interface/i.app";
 import { IFormData } from "../interface/i.formdata";
 import moment from "moment";
@@ -84,7 +84,7 @@ const Categories:FC = () => {
                     {/** a save button and a filter based on the category */}
                     <div className="flex flex-col items-end">
                         <div className="flex flex-row items-center justify-start">
-                            <SaveButton handler={() => null}/> 
+                            <SaveButton handler={() => dispatch(saveTodosLocally())}/> 
                         </div>
                     </div>
                     

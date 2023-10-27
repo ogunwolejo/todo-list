@@ -11,7 +11,7 @@ import { ICategory, ITodo } from "../interface/i.app";
 import { v4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { addTodos } from "../store/slice";
+import { addTodos, saveTodosLocally } from "../store/slice";
 import { DISPATCH_TYPES } from "../util/constant";
 import moment from "moment";
 
@@ -57,7 +57,8 @@ const TodoList:FC = () => {
             title:e.title,
             id:e.id,
             createdAt:e.createdAt,
-            description:e.description
+            description:e.description,
+            category:e.category
         }
         dispatch(addTodos({type:DISPATCH_TYPES.TODO, payload:t}))
     }
@@ -87,7 +88,7 @@ const TodoList:FC = () => {
                     {/** a save button and a filter based on the category */}
                     <div className="flex flex-col items-end">
                         <div className="flex flex-row items-center justify-start">
-                            <SaveButton handler={() => null}/> 
+                            <SaveButton handler={() => dispatch(saveTodosLocally())}/> 
                         </div>
                     </div>
                     

@@ -81,7 +81,7 @@ const TodoList:FC = () => {
                         <Card1 title="Current Todos" data={copyTodos.length || 0} bgColor="bg-white" color="text-[#898989]"/>
                     </div>
                     <div className="">
-                        <Card1 title="Todos Saved Locally" data={savedData} bgColor="bg-white" color="text-[#898989]"/>
+                        <Card1 title="Saved Data Locally" data={savedData} bgColor="bg-white" color="text-[#898989]"/>
                     </div>                
                 </div>
 

@@ -80,7 +80,7 @@ const Dashboard:FC = () => {
                         <Card1 title="Categories" data={category.length || 0} bgColor="bg-indigo-700" />
                     </div> 
                     <div className="">
-                        <Card1 title="Saved Todos" data={savedData} bgColor="bg-green-700" />
+                        <Card1 title="Saved Data Locally" data={savedData} bgColor="bg-green-700" />
                     </div>                
                 </div>
 

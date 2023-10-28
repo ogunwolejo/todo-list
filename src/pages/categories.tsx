@@ -97,7 +97,7 @@ const Categories:FC = () => {
                                     <CategoryCard
                                         key={idx} 
                                         title={e.title}
-                                        data={7} 
+                                        //data={7} 
                                         createdAt={e.createdAt} 
                                         icon={defaultIcon}
                                     />

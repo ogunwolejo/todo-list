@@ -46,10 +46,6 @@ export const Modal:FC<{open:boolean; close:any; d:ICardData}> = ({open, close, d
                           </p>
                         }
 
-                        <p className="text-sm text-gray-500">
-                          {d.data || 0}
-                        </p>
-
 
                       </div>
                     </div>

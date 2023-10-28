@@ -6,7 +6,6 @@ import moment from 'moment';
 describe('CategoryCard Component', () => {
   const mockData = {
     title: 'Test Title',
-    data: 42,
     createdAt: moment(),
     icon: <div>Mock Icon</div>,
     description: 'Test Description'
@@ -16,7 +15,6 @@ describe('CategoryCard Component', () => {
     const { getByText } = render(
       <CategoryCard
         title={mockData.title}
-        data={mockData.data}
         createdAt={mockData.createdAt}
         icon={mockData.icon}
         description={mockData.description}
@@ -33,7 +31,6 @@ describe('CategoryCard Component', () => {
     const { getByText, getByTestId } = render(
       <CategoryCard
         title={mockData.title}
-        data={mockData.data}
         createdAt={mockData.createdAt}
         icon={mockData.icon}
         description={mockData.description}

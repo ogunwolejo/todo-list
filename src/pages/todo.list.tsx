@@ -72,7 +72,7 @@ const TodoList:FC = () => {
     return (
         <Fragment>
             <Header title="My Todo List" handler={setSearch} search={search}/>
-            <div className="p-6 bg-gray-200 h-screen">
+            <div className="p-6 bg-gray-200 h-full">
                 <div className="grid grid-cols-3 grid-flow-col gap-2 lg:gap-4">
                     <div className="">
                         <Card1 title="All Todos" data={todos.length || 0} bgColor="bg-white" color="text-[#898989]"/>

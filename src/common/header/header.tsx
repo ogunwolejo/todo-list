@@ -3,7 +3,7 @@ import Dropdown from "../mobile.nav";
 
 const Header:FC<{title:string; handler:Function; search:string}> = ({title, search, handler}) => {
     return (
-        <div className="bg-white h-10 md:h-20 min-w-fit xl:max-w-8xl box-border md:text-lg lg:text-2xl flex flex-row justify-equal md:justify-between xl:justify-between items-center drop-shadow-sm">
+        <div className="bg-white h-10 md:h-20 min-w-fit xl:max-w-8xl box-border text-xs md:text-sm lg:text-xl flex flex-row justify-equal md:justify-between xl:justify-between items-center drop-shadow-sm">
             <div className="text-xs md:text-lg font-emibold ms-2">{title}</div>
             <div className="mr-2">
                 <SearchInput handler={handler} search={search}/>

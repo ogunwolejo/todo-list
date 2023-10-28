@@ -65,7 +65,7 @@ const Categories:FC = () => {
 
     return (
         <Fragment>
-            <Header title="Todos Categry" handler={setSearch} search={search}/>
+            <Header title="Categories" handler={setSearch} search={search}/>
             <div className="p-6 bg-gray-200">
                 <div className="grid grid-cols-3 grid-flow-col gap-2 lg:gap-4">
                     <div className="">

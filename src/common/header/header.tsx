@@ -19,7 +19,7 @@ export default Header
 
 
 // takes in the handler and text
-const SearchInput:FC<{handler:Function; search:string}> = memo(({handler, search}) => {
+export const SearchInput:FC<{handler:Function; search:string}> = memo(({handler, search}) => {
     return (
         <div className="flex items-center border justify-self-center self-center rounded-xl py-1 mx-6 bg-trans">
             <span className="mx-1">

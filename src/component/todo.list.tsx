@@ -20,8 +20,16 @@ const TodoListComponent:FC<{title:string; createdAt:string; icon:ReactNode}> = (
             </div>  
             <div className="flex flex-row justify-center items-center gap-1">
                     <CopyToClipboardButton copy={copy} handler={() => {
+                        navigator.clipboard.writeText(title)
+                        .then(() => {
+                            swal("Great!!", `Your Todo item of title ${title} as been copied`, "success");
+                            console.log(navigator)
+                            })
+                            .catch(error => {
+                                console.error('Error copying to clipboard:', error);
+                            });
                         setCopy(title)
-                        swal("Great!!", `Your Todo item of title ${title} as been cliq`, "success");
+                        
                     }} key={v4()}/>
                 <div className="text-xs md:text-sm text-black">
                     {createdAt}

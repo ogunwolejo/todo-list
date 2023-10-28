@@ -58,7 +58,7 @@ const Dashboard:FC = () => {
     const navigate = useNavigate()
     
     return (
-        <div className="h-full">
+        <Fragment>
             <div className="bg-white h-10 md:h-20 min-w-fit xl:max-w-8xl box-border md:text-lg lg:text-2xl flex flex-row justify-between xl:justify-between items-center drop-shadow-sm">
                 <div className="text-xs md:text-lg font-emibold ms-2">Dashboard</div>
                 {/* <div className="mr-2">
@@ -68,7 +68,7 @@ const Dashboard:FC = () => {
                     <Dropdown/>
                 </div>
             </div>
-            <div className="p-6 bg-gray-200  ">
+            <div className="p-6 bg-gray-200 screen ">
                 <div className="grid grid-cols-2 md:grid-cols-4 grid-cols-4 md:grid-flow-col gap-2 lg:gap-3">
                     <div className="">
                         <Card1 title="Overall Todo List" data={todos.length || 0} bgColor="bg-red-700"/>
@@ -109,7 +109,7 @@ const Dashboard:FC = () => {
                     <input className="p-3 border border-4 border-white h-16 w-full cursor-pointer" value={pastedData}   onPaste={(e) => handlePaste(e)} />
                 </div>
             </div>
-        </div>
+        </Fragment>
     )
 }
 

@@ -72,7 +72,7 @@ const TodoList:FC = () => {
     return (
         <Fragment>
             <Header title="My Todo List" handler={setSearch} search={search}/>
-            <div className="p-6 bg-gray-200 h-full">
+            <div className="p-6 bg-gray-200 ">
                 <div className="grid grid-cols-3 grid-flow-col gap-2 lg:gap-4">
                     <div className="">
                         <Card1 title="All Todos" data={todos.length || 0} bgColor="bg-white" color="text-[#898989]"/>
@@ -85,7 +85,7 @@ const TodoList:FC = () => {
                     </div>                
                 </div>
 
-                <div className="p-1 mt-10 h-auto ">
+                <div className="p-1 mt-10 h-screen ">
                     {/** a save button and a filter based on the category */}
                     <div className="flex flex-col items-end">
                         <div className="flex flex-row items-center justify-start">

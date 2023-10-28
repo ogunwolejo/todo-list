@@ -66,7 +66,7 @@ const Categories:FC = () => {
     return (
         <Fragment>
             <Header title="Todos Categry" handler={setSearch} search={search}/>
-            <div className="p-6 bg-gray-200 h-full">
+            <div className="p-6 bg-gray-200">
                 <div className="grid grid-cols-3 grid-flow-col gap-2 lg:gap-4">
                     <div className="">
                         <Card1 title="All Todos" data={todos.length || 0} bgColor="bg-white" color="text-[#898989]"/>
@@ -79,7 +79,7 @@ const Categories:FC = () => {
                     </div>                
                 </div>
 
-                <div className="p-1 mt-3 h-auto ">
+                <div className="p-1 mt-3 h-screen ">
                     {/** a save button and a filter based on the category */}
                     <div className="flex flex-col items-end">
                         <div className="flex flex-row items-center justify-start">
@@ -89,9 +89,9 @@ const Categories:FC = () => {
                     
                     {/*** the todos based on their category */}
                     <div className="my-1 w-full p-2 box-border flex flex-col justify-start items-center">
-                        <div className="text-center text-xs md:text-sm lg:text-xl font-bold uppercase text-black tracking-wider mb-1">Category List</div>
-                        <p className="text-xs md:text-sm mb-6 font-light font-italics capitalize">can only create a maximun of twelve categories</p>
-                        {!loading && <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 lg:gap-3" >
+                        <div className="text-center text-xs md:text-sm lg:text-xl font-bold uppercase text-black tracking-wider mb-4">Category List</div>
+                        {/* <p className="text-xs md:text-sm mb-6 font-light font-italics capitalize">can only create a maximun of twelve categories</p> */}
+                        {!loading && <div className="grid grid-cols-3 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3" >
                             {
                                 copyCategory.map((e:ICategory, idx:number) => (
                                     <CategoryCard

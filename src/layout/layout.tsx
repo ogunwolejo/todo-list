@@ -5,10 +5,10 @@ import Header from "../common/header/header";
 
 const Layout:FC = () => {
     return (
-        <div className="flex h-screen">
+        <div className="flex">
             <Sidebar/>
-            <div className="flex-grow h-full">
-                <div className="flex-1 h-full">
+            <div className="flex-grow">
+                <div className="flex-1">
                     <Outlet/>
                 </div>
             </div>

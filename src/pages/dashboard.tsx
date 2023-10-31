@@ -105,8 +105,15 @@ const Dashboard:FC = () => {
                 </div>
 
                 {/** saving todos */}
-                <div className="my-4 flex flex-row justify-center items-center">
-                    <input className="p-3 border border-4 border-white h-16 w-full cursor-pointer" value={pastedData}   onPaste={(e) => handlePaste(e)} />
+                <div className="my-2 py-1 flex flex-row justify-center items-center">
+                    {/* <input className="p-3 border border-dash border-4 border-white h-16 w-full cursor-pointer" value={pastedData}   onPaste={(e) => handlePaste(e)} /> */}
+                    <textarea 
+                        placeholder="testing the clipboard by pasting ...."
+                        className="p-3 border border-dash border-4 border-white text-sm placeholder::text-sm h-16 w-4/6 lg:w-3/6 cursor-pointer" 
+                        value={pastedData}
+                        onChange={(e:any) => setPastedData(e.target.value)}   
+                        onPaste={(e) => handlePaste(e)}
+                    />
                 </div>
             </div>
         </Fragment>
